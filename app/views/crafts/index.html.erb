@@ -1,12 +1,13 @@
 <div class="container">
-  </div class = "row">
-    <% @crafts.each do |craft| %>
+  <% @crafts.each do |craft| %>
+    </div class = "row">
       <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" alt= 'Image of <%= craft.name %>' />
-      <div class="card-product-infos">
-        <h2><%= craft.name %></h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
+        <img src="https://picsum.photos/120" alt= 'Image of <%= craft.name %>' />
+        <div class="card-product-infos">
+          <h2><%= craft.name %></h2>
+          <p><%= craft.price.to_i %>€</p>
+        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
