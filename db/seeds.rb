@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Craft.destroy_all
+10.times do
+  craft = Craft.create(name: 'Service', price: rand(100), user_id:1)
+  craft.save!
+end
