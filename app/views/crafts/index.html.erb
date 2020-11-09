@@ -1,5 +1,12 @@
-<ul>
-  <% @crafts.each do |craft| %>
-    <li><%= craft.name %></li>
-  <% end %>
-</ul>
+<div class="container">
+  </div class = "row">
+    <% @crafts.each do |craft| %>
+      <div class="card-product">
+      <img src=" <%= craft.image_url.valid? "#{craft.image_url}" : 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg' %>" alt= 'Image of <%= craft.name %>' />
+      <div class="card-product-infos">
+        <h2><%= craft.name %></h2>
+        <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+    <% end %>
+  </div>
+</div>
