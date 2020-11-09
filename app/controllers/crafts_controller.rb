@@ -40,7 +40,7 @@ class CraftsController < ApplicationController
   private
 
   def craft_params
-    params.require(:craft).permit(:name, :price)
+    params.require(:craft).permit(:name, :price, :photo)
   end
 
 end
