@@ -13,8 +13,13 @@ class CraftsController < ApplicationController
 
   def create
     @craft = Craft.new(craft_params)
-    @craft.save
-    redirect_to craft_path(@craft)
+    if @craft.save
+      flash[:success] = "Craft successfully created"
+      redirect_to '/crafts'
+    else
+      flash[:error] = "Something went wrong"
+      redirect_to new_craft_path
+    end
   end
 
   def edit
