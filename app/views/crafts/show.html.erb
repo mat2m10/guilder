@@ -1,14 +1,14 @@
 <div class="container">
     <div class="craft-details">
-      <img src="https://canary.contestimg.wish.com/api/webimage/5eabbbd5fcc85c78a5c87cc3-large.jpg?cache_buster=d22386e92eb455ad622467377791fa82" />
+      <%= cl_image_tag @craft.photo.key%>
       <div class="craft-details-infos">
         <div>
          <h2><%= @craft.name %></h2>
          <p><%= @craft.description %></p>
         </div>
         <h2 class="craft-details-pricing"><%= @craft.price %></h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="craft-details-user avatar-bordered" />
-      </div>  
+        <%= (cl_image_tag @craftman.photo.key, :class => "craft-details-user avatar-bordered") %>
+      </div>
     </div>
     <div class="booking-form">
     <%= render "bookings/new", craft: @craft, booking: @booking %>
