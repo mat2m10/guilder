@@ -1,5 +1,5 @@
 class CraftsController < ApplicationController
-  before_action :set_restaurant, only: [:edit, :update, :show, :destory]!
+  before_action :set_restaurant, only: %i[edit update show destroy]
 
   def index
     @crafts = Craft.all
@@ -15,9 +15,8 @@ class CraftsController < ApplicationController
   end
 
   def create
-    @craft = Craft.new(craft_params)
+    @craft = Craft.create(craft_params)
     authorize @restaurant
-    @craft.save
     redirect_to crafts_path
   end
 
