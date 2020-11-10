@@ -2,10 +2,16 @@
   <% @crafts.each do |craft| %>
     </div class = "row">
       <div class="card-product">
-        <img src="https://picsum.photos/120" alt= 'Image of <%= craft.name %>' />
+        <%= cl_image_tag craft.photo.key%>
         <div class="card-product-infos">
           <h2><%= craft.name %></h2>
           <p><%= craft.price.to_i %>€</p>
+          <%= link_to "show", craft_path(craft) %>
+          <%= link_to "Edit", edit_craft_path(craft) %>
+          <%= link_to "Delete #{craft.name}",
+            craft_path(craft),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
         </div>
       </div>
     </div>
