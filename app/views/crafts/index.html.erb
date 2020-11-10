@@ -3,7 +3,7 @@
     </div class = "row">
       <div class="card-product">
         <%= cl_image_tag craft.photo.key%>
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <%= cl_image_tag user.photo.key%>
         <div class="card-product-infos">
           <h2><%= craft.name %></h2>
           <p><%= craft.price.to_i %>€</p>
