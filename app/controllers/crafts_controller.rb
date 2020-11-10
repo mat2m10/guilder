@@ -2,7 +2,8 @@ class CraftsController < ApplicationController
   before_action :set_craft, only: %i[edit update show destroy]
 
   def index
-    @crafts = Craft.all
+    @users = User.all
+    @crafts = policy_scope(Craft)
   end
 
   def show
