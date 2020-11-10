@@ -8,6 +8,7 @@ class CraftsController < ApplicationController
 
   def show
     @booking = Booking.new
+    authorize @craft
   end
 
   def new
@@ -21,13 +22,17 @@ class CraftsController < ApplicationController
     redirect_to crafts_path
   end
 
-  def edit; end
+  def edit
+    authorize @craft
+  end
 
   def update
     @craft.update(params[:craft])
+    authorize @craft
   end
 
   def destroy
+    authorize @craft
     @craft.destroy
     redirect_to crafts_path
   end
