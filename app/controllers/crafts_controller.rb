@@ -1,10 +1,12 @@
 class CraftsController < ApplicationController
   def index
     @crafts = Craft.all
+    # @bookings = current_user.Booking.all
   end
 
   def show
     @craft = Craft.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
