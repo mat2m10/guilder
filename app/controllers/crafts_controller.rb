@@ -1,6 +1,7 @@
 class CraftsController < ApplicationController
   def index
     @crafts = Craft.all
+    @users = User.all
     # @bookings = current_user.Booking.all
   end
 
