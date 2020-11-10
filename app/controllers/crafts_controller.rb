@@ -1,5 +1,5 @@
 class CraftsController < ApplicationController
-  before_action :set_restaurant, only: %i[edit update show destroy]
+  before_action :set_craft, only: %i[edit update show destroy]
 
   def index
     @crafts = Craft.all
@@ -11,12 +11,12 @@ class CraftsController < ApplicationController
 
   def new
     @craft = Craft.new
-    authorize @restaurant
+    authorize @craft
   end
 
   def create
     @craft = Craft.create(craft_params)
-    authorize @restaurant
+    authorize @craft
     redirect_to crafts_path
   end
 
@@ -38,7 +38,7 @@ class CraftsController < ApplicationController
     params.require(:craft).permit(:description, :name, :price, :photo).merge(user: current_user)
   end
 
-  def set_restaurant
+  def set_craft
     @craft = Craft.find(params[:id])
   end
 end
