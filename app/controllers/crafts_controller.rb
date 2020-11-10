@@ -44,7 +44,7 @@ class CraftsController < ApplicationController
 
   def craft_params
     # Celui qui cree le craft c'est le current user
-    params.require(:craft).permit(:name, :price, :photo).merge(user: current_user)
+    params.require(:craft).permit(:description, :name, :price, :photo).merge(user: current_user)
   end
 
 end
