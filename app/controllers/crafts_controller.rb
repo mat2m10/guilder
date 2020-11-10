@@ -1,43 +1,33 @@
 class CraftsController < ApplicationController
+  before_action :set_restaurant, only: [:edit, :update, :show, :destory]!
+
   def index
     @crafts = Craft.all
-    # @bookings = current_user.Booking.all
   end
 
   def show
-    @craft = Craft.find(params[:id])
     @booking = Booking.new
   end
 
   def new
     @craft = Craft.new
+    authorize @restaurant
   end
 
   def create
     @craft = Craft.new(craft_params)
-    # binding.pry
+    authorize @restaurant
     @craft.save
     redirect_to crafts_path
-    # if @craft.save
-    #   flash[:success] = "Craft successfully created"
-    #   redirect_to '/crafts'
-    # else
-    #   flash[:error] = "Something went wrong"
-    #   redirect_to new_craft_path
-    # end
   end
 
-  def edit
-    @craft = Craft.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @craft = Craft.find(params[:id])
     @craft.update(params[:craft])
   end
 
   def destroy
-    @craft = Craft.find(params[:id])
     @craft.destroy
     redirect_to crafts_path
   end
@@ -49,4 +39,7 @@ class CraftsController < ApplicationController
     params.require(:craft).permit(:description, :name, :price, :photo).merge(user: current_user)
   end
 
+  def set_restaurant
+    @craft = Craft.find(params[:id])
+  end
 end
