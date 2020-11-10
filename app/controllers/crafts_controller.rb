@@ -13,6 +13,7 @@ class CraftsController < ApplicationController
 
   def create
     @craft = Craft.new(craft_params)
+    # binding.pry
     @craft.save
     redirect_to crafts_path
     # if @craft.save
@@ -42,7 +43,8 @@ class CraftsController < ApplicationController
   private
 
   def craft_params
-    params.require(:craft).permit(:name, :price, :photo)
+    # Celui qui cree le craft c'est le current user
+    params.require(:craft).permit(:name, :price, :photo).merge(user: current_user)
   end
 
 end
