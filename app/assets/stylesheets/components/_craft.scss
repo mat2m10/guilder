@@ -2,7 +2,7 @@
     overflow: hidden;
     background: white;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    margin-top: 50px;
+    margin-top: 15px;
   }
   
   .craft-details > img {
@@ -37,4 +37,20 @@
     right: 16px;
     top: -20px;
     width: 40px;
+  }
+
+  .all-the-cards {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    padding: 16px;
+    padding-top: 0;
+    flex-grow: 1;
+    width: 1250px;
+  }
+
+  #map {
+    height: 100vh;
+    position: sticky;
+    top: 0px;
   }
