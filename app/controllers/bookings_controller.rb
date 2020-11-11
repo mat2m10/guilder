@@ -1,18 +1,25 @@
 class BookingsController < ApplicationController
+  before_action :set_craft, only: %i[new create]
   def new
     @booking = Booking.new
-    @craft = Craft.find(params[:craft_id])
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(bookings_params)
-    @craft = Craft.find(params[:craft_id])
+    authorize @booking
     @booking.craft = @craft
-    @booking.save    
+    @booking.save
     redirect_to crafts_path
   end
 
   def bookings_params
     params.require(:booking).permit(:date, :duration)
+  end
+
+  private
+
+  def set_craft
+    @craft = Craft.find(params[:craft_id])
   end
 end
