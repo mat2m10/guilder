@@ -6,12 +6,12 @@
          <h2><%= @craft.name %></h2>
          <p><%= @craft.description %></p>
         </div>
-        <h2 class="craft-details-pricing"><%= @craft.price %></h2>
-        <%= (cl_image_tag @craftman.photo.key, :class => "craft-details-user avatar-bordered") %>
+        <h2 class="craft-details-pricing"><%= @craft.price %> €</h2>
+        <%= cl_image_tag @craftman.photo.key, class: "craft-details-user avatar-bordered" %>
       </div>
     </div>
     <div class="booking-form">
-    <%= render "bookings/new", craft: @craft, booking: @booking %>
+      <%= render "bookings/new", craft: @craft, booking: @booking %>
     </div>
 </div>
 

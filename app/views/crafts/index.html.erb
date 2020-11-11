@@ -5,22 +5,24 @@
         <%= cl_image_tag craft.photo.key%>
         <div class="craft-details-infos">
           <div>
-          <h2><%= craft.name %></h2>
-          <p><%= craft.description %></p>
+            <h2 class="block-inline"><%= craft.name %></h2>
+            <p class="block-with-text"><%= craft.description %></p>
           </div>
-          <h2 class="craft-details-pricing"><%= craft.price %></h2>
-          <%= (cl_image_tag @users.find(craft.user_id).photo.key, :class => "craft-details-user avatar-bordered") %>
+          <%= cl_image_tag @users.find(craft.user_id).photo.key, class: "craft-details-user avatar-bordered" %>
         </div>
-        <% if policy(craft).show? %>
-          <%= link_to "Show more", craft_path(craft), class: 'btn btn-info' %>
-        <% end %>
-        <% if policy(craft).edit? %>
-          <%= link_to "Edit", edit_craft_path(craft), class: 'btn btn-warning' %>
-        <% end %>
-        <% if policy(craft).destroy? %>
-          <%= link_to "Delete craft", craft_path(craft), method: :delete,
-              data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
-        <% end %>
+        <div class="craft-details-bottom">
+          <% if policy(craft).show? %>
+            <%= link_to "More", craft_path(craft), class: 'btn btn-info my-1' %>
+          <% end %>
+          <% if policy(craft).edit? %>
+            <%= link_to "Edit", edit_craft_path(craft), class: 'btn btn-warning my-1' %>
+          <% end %>
+          <% if policy(craft).destroy? %>
+            <%= link_to "Delete", craft_path(craft), method: :delete,
+            data: { confirm: "Are you sure?" }, class: 'btn btn-danger my-1' %>
+          <% end %>
+          <h2 class="my-1 craft-details-pricing"><%= craft.price %> €</h2>
+        </div>
       </div>
     <% end %>
 

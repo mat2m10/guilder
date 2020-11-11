@@ -1,40 +1,95 @@
 .craft-details {
-    overflow: hidden;
-    background: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    margin-top: 50px;
-  }
-  
-  .craft-details > img {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 50px;
+  height: 450px;
+  padding:20px;
+  min-width: 200px;
+    
+  & > img {
     height: 200px;
     width: 100%;
     object-fit: cover;
+    margin-bottom: 20px;
   }
   
-  .craft-details h2 {
+  h2 {
     font-size: 16px;
     font-weight: bold;
     margin: 0;
   }
   
-  .craft-details p {
+  p {
     font-size: 12px;
     opacity: .7;
     margin: 0;
   }
   
   
-  .craft-details .craft-details-infos {
-    padding: 16px;
+  .craft-details-infos {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-end;
     position: relative;
   }
   
-  .craft-details-infos .craft-details-user {
+}
+  .craft-details-user {
     position: absolute;
     right: 16px;
-    top: -20px;
+    top: -40px;
     width: 40px;
   }
+
+.craft-details-bottom {
+  display: flex;
+  width: 200px;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+}
+.craft-details-pricing {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+// To have text cropped correctly in index
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+.block-with-text {
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 5);  
+}
+
+.block-inline {
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1);
+}
