@@ -1,23 +1,34 @@
 <div class="container">
   <div class="row justify-content-center">
-  <% @crafts.each do |craft| %>
-    <div class="craft-details col-12 col-md-6 col-lg-3 mx-2">
-      <%= cl_image_tag craft.photo.key%>
-      <div class="craft-details-infos">
-        <div>
-         <h2><%= craft.name %></h2>
-         <p><%= craft.description %></p>
+    <% @crafts.each do |craft| %>
+      <div class="craft-details col-12 col-sm-6 col-md-4 col-lg-3 mx-2">
+        <%= cl_image_tag craft.photo.key%>
+        <div class="craft-details-infos">
+          <div>
+          <h2><%= craft.name %></h2>
+          <p><%= craft.description %></p>
+          </div>
+          <h2 class="craft-details-pricing"><%= craft.price %></h2>
+          <%= (cl_image_tag @users.find(craft.user_id).photo.key, :class => "craft-details-user avatar-bordered") %>
         </div>
-        <h2 class="craft-details-pricing"><%= craft.price %></h2>
-        <%= (cl_image_tag @users.find(craft.user_id).photo.key, :class => "craft-details-user avatar-bordered") %>
+        <% if policy(craft).show? %>
+          <%= link_to "Show more", craft_path(craft), class: 'btn btn-info' %>
+        <% end %>
+        <% if policy(craft).edit? %>
+          <%= link_to "Edit", edit_craft_path(craft), class: 'btn btn-warning' %>
+        <% end %>
+        <% if policy(craft).destroy? %>
+          <%= link_to "Delete craft", craft_path(craft), method: :delete,
+              data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+        <% end %>
       </div>
-      <%= link_to "Show", craft_path(craft) %>
-      <%= link_to "Edit", edit_craft_path(craft) %>
-      <%= link_to "Delete #{craft.name}",
-            craft_path(craft),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-    </div>
     <% end %>
+
+    <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div>
+    
   </div>
 </div>

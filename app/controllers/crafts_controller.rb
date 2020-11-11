@@ -4,6 +4,13 @@ class CraftsController < ApplicationController
   def index
     @users = User.all
     @crafts = policy_scope(Craft)
+
+    @markers = @crafts.geocoded.map do |craft|
+      {
+        lat: craft.latitude,
+        lng: craft.longitude
+      }
+    end
   end
 
   def show
