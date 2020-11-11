@@ -48,8 +48,7 @@
   flex-wrap: wrap-reverse;
   justify-content: space-between;
   text-align: center;
-  position: absolute;
-  bottom: 20px;
+  position: relative;
 }
 .craft-details-pricing {
   display: inline-block;
@@ -95,17 +94,18 @@
 }
 
 .all-the-cards {
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 16px;
-    padding: 16px;
-    padding-top: 0;
-    flex-grow: 1;
-    width: 1250px;
-  }
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+  padding-top: 0;
+  flex-grow: 1;
+  width: 1250px;
+}
 
 #map {
-    height: 100vh;
-    position: sticky;
-    top: 0px;
-  }
+  height: 100vh;
+  position: sticky;
+  top: 0px;
+  max-width: 600px;
+}
