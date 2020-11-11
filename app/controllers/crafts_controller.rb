@@ -8,7 +8,8 @@ class CraftsController < ApplicationController
     @markers = @crafts.geocoded.map do |craft|
       {
         lat: craft.latitude,
-        lng: craft.longitude
+        lng: craft.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
       }
     end
   end
@@ -35,8 +36,9 @@ class CraftsController < ApplicationController
   end
 
   def update
-    @craft.update(params[:craft])
+    @craft.update(craft_params)
     authorize @craft
+    redirect_to @craft, notice: 'Your ad was successfully updated 😃'   
   end
 
   def destroy

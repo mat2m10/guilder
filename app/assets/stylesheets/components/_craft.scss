@@ -93,3 +93,19 @@
 .block-inline {
   @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1);
 }
+
+.all-the-cards {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    padding: 16px;
+    padding-top: 0;
+    flex-grow: 1;
+    width: 1250px;
+  }
+
+#map {
+    height: 100vh;
+    position: sticky;
+    top: 0px;
+  }
