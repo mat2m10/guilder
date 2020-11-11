@@ -8,7 +8,9 @@
             <h2 class="block-inline"><%= craft.name %></h2>
             <p class="block-with-text"><%= craft.description %></p>
           </div>
-          <%= cl_image_tag @users.find(craft.user_id).photo.key, class: "craft-details-user avatar-bordered" %>
+          <%= link_to user_path(craft.user_id) do %>
+           <%= cl_image_tag @users.find(craft.user_id).photo.key, class: "craft-details-user avatar-bordered" %>
+        <% end %>
         </div>
         <div class="craft-details-bottom">
           <% if policy(craft).show? %>
