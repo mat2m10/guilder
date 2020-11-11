@@ -8,7 +8,8 @@ class CraftsController < ApplicationController
     @markers = @crafts.geocoded.map do |craft|
       {
         lat: craft.latitude,
-        lng: craft.longitude
+        lng: craft.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
       }
     end
   end
