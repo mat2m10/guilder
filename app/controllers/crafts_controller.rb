@@ -1,43 +1,48 @@
 class CraftsController < ApplicationController
+  before_action :set_craft, only: %i[edit update show destroy]
+
   def index
-    @crafts = Craft.all
-    # @bookings = current_user.Booking.all
+    @users = User.all
+    @crafts = policy_scope(Craft)
+
+    @markers = @crafts.geocoded.map do |craft|
+      {
+        lat: craft.latitude,
+        lng: craft.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
+      }
+    end
   end
 
   def show
-    @craft = Craft.find(params[:id])
+    @craftman = User.find(@craft.user_id)
     @booking = Booking.new
+    authorize @craft
   end
 
   def new
     @craft = Craft.new
+    authorize @craft
   end
 
   def create
-    @craft = Craft.new(craft_params)
-    # binding.pry
-    @craft.save
+    @craft = Craft.create(craft_params)
+    authorize @craft
     redirect_to crafts_path
-    # if @craft.save
-    #   flash[:success] = "Craft successfully created"
-    #   redirect_to '/crafts'
-    # else
-    #   flash[:error] = "Something went wrong"
-    #   redirect_to new_craft_path
-    # end
   end
 
   def edit
-    @craft = Craft.find(params[:id])
+    authorize @craft
   end
 
   def update
-    @craft = Craft.find(params[:id])
-    @craft.update(params[:craft])
+    @craft.update(craft_params)
+    authorize @craft
+    redirect_to @craft, notice: 'Your ad was successfully updated 😃'   
   end
 
   def destroy
-    @craft = Craft.find(params[:id])
+    authorize @craft
     @craft.destroy
     redirect_to crafts_path
   end
@@ -49,4 +54,7 @@ class CraftsController < ApplicationController
     params.require(:craft).permit(:description, :name, :price, :photo).merge(user: current_user)
   end
 
+  def set_craft
+    @craft = Craft.find(params[:id])
+  end
 end
