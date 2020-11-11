@@ -7,6 +7,7 @@ class CraftsController < ApplicationController
   end
 
   def show
+    @craftman = User.find(@craft.user_id)
     @booking = Booking.new
     authorize @craft
   end
