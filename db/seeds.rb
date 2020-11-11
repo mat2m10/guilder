@@ -11,10 +11,20 @@ long_init = 4.4055443
 dist = 0.05303020000000025
 today = DateTime.now
 
+first = User.create(email: "b@t.man", username: "batman", first_name: "Bruce", last_name: "Wayne", password:'123456')
+file = URI.open('https://www.pngkit.com/png/detail/6-61591_batman-icon-jira-avatar.png')
+first.photo.attach(io: file, filename: 'bat.png', content_type: 'image/png')
+first.save!
+
 10.times do
   user = User.create(email: Faker::Internet.email, username: Faker::Movies::LordOfTheRings, first_name: Faker::Movies::StarWars.planet, last_name: Faker::Movies::StarWars, password:'123456')
-  file = URI.open('https://picsum.photos/200')
-  user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  coin = rand(2)+1
+  if coin == 1
+    file = URI.open("https://randomuser.me/api/portraits/women/#{rand(99)}.jpg")
+  else
+    file = URI.open("https://randomuser.me/api/portraits/men/#{rand(99)}.jpg")
+  end
+  user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/jpg')
   user.save!
 end
 
