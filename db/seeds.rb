@@ -17,7 +17,7 @@ first.photo.attach(io: file, filename: 'bat.png', content_type: 'image/png')
 first.save!
 
 10.times do
-  user = User.create(email: Faker::Internet.email, username: Faker::Movies::LordOfTheRings, first_name: Faker::Movies::StarWars.planet, last_name: Faker::Movies::StarWars, password:'123456')
+  user = User.create(email: Faker::Internet.email, username: Faker::Movies::LordOfTheRings.character, first_name: Faker::Movies::StarWars.planet, last_name: Faker::Movies::StarWars.droid, password:'123456')
   coin = rand(2)+1
   if coin == 1
     file = URI.open("https://randomuser.me/api/portraits/women/#{rand(99)}.jpg")
