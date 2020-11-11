@@ -35,8 +35,9 @@ class CraftsController < ApplicationController
   end
 
   def update
-    @craft.update(params[:craft])
+    @craft.update(craft_params)
     authorize @craft
+    redirect_to @craft, notice: 'Your ad was successfully updated 😃'   
   end
 
   def destroy
