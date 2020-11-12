@@ -1,8 +1,8 @@
 <%= simple_form_for [craft, booking] do |f| %>
   <p>Enter a suitable timeframe to schedule a workshop. The craftman will follow up with you</p>
-  <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>    
-  <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-  <p>Add any other relevant information</p>
-  <%= f.input :description %>
+  <label for="example-datetime-local-input">Date</label>    
+  <input class="form-control" type="datetime-local" value="<%= Date.today %>" id="example-datetime-local-input">
+  <label for="booking_description">Add any other relevant information</label>   
+  <%= f.input :description, label: false %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
