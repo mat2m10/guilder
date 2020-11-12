@@ -38,7 +38,7 @@ class CraftsController < ApplicationController
   def update
     @craft.update(craft_params)
     authorize @craft
-    redirect_to @craft, notice: 'Your ad was successfully updated 😃'   
+    redirect_to @craft, notice: 'Your ad was successfully updated 😃'
   end
 
   def destroy

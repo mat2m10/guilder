@@ -14,9 +14,14 @@ today = DateTime.now
 first = User.create(email: "b@t.man", username: "batman", first_name: "Bruce", last_name: "Wayne", password:'123456')
 file = URI.open('https://www.pngkit.com/png/detail/6-61591_batman-icon-jira-avatar.png')
 first.photo.attach(io: file, filename: 'bat.png', content_type: 'image/png')
+first.description = "I am Batman!!!"
 first.save!
 
 10.times do
+  about = ""
+  10.times do
+    about += "#{Faker::Movies::Hobbit.quote} "
+  end
   user = User.create(email: Faker::Internet.email, username: Faker::Movies::LordOfTheRings.character, first_name: Faker::Movies::StarWars.planet, last_name: Faker::Movies::StarWars.droid, password:'123456')
   coin = rand(2)+1
   if coin == 1
@@ -24,6 +29,7 @@ first.save!
   else
     file = URI.open("https://randomuser.me/api/portraits/men/#{rand(99)}.jpg")
   end
+  user.about = about
   user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/jpg')
   user.save!
 end
