@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
-  before_action :set_craft, only: %i[edit update show destroy]
-  def show
+ def show
     @user = User.find(params[:id])
     authorize @user
+    @crafts = @user.crafts
   end
 
-  def all    
-    @user = User.find(params[:user_id]) 
+  def all
+    @user = User.find(params[:user_id])
     @crafts = @user.crafts
     authorize @user
   end
 
   def edit
-    authorize @user
+    authorize current_user
   end
 
   def update
@@ -29,9 +29,4 @@ class UsersController < ApplicationController
     # Celui qui cree le craft c'est le current user
     params.require(:user).permit(:description, :username, :about, :first_name, :last_name, :photo)
   end
-
-  def set_craft
-    @user = User.find(params[:id])
-  end
-  
 end

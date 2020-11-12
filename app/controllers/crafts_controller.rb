@@ -21,7 +21,7 @@ class CraftsController < ApplicationController
   end
 
   def new
-    @craft = Craft.new
+    @craft = Craft.new    
     authorize @craft
   end
 
