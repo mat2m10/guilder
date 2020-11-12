@@ -1,21 +1,36 @@
-<div class="container">
-  <% @crafts.each do |craft| %>
-    </div class = "row">
-      <div class="card-product">
+<div class="main-container d-flex">
+  <div class = "all-the-cards">
+    <% @crafts.each do |craft| %>
+      <div class="craft-details">
         <%= cl_image_tag craft.photo.key%>
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-          <h2><%= craft.name %></h2>
-          <p><%= craft.price.to_i %>€</p>
-          <p><%= craft.description %></p>
-          <%= link_to "show", craft_path(craft) %>
-          <%= link_to "Edit", edit_craft_path(craft) %>
-          <%= link_to "Delete #{craft.name}",
-            craft_path(craft),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+        <div class="craft-details-infos">
+          <div>
+            <h2 class="block-inline"><%= craft.name %></h2>
+            <p class="block-with-text"><%= craft.description %></p>
+          </div>
+          <%= link_to user_path(craft.user_id) do %>
+           <%= cl_image_tag @users.find(craft.user_id).photo.key, class: "craft-details-user avatar-bordered" %>
+        <% end %>
+        </div>
+        <div class="craft-details-bottom">
+          <% if policy(craft).show? %>
+            <%= link_to "More", craft_path(craft), class: 'btn btn-info my-1' %>
+          <% end %>
+          <% if policy(craft).edit? %>
+            <%= link_to "Edit", edit_craft_path(craft), class: 'btn btn-warning my-1' %>
+          <% end %>
+          <% if policy(craft).destroy? %>
+            <%= link_to "Delete", craft_path(craft), method: :delete,
+            data: { confirm: "Are you sure?" }, class: 'btn btn-danger my-1' %>
+          <% end %>
+          <h2 class="my-1 craft-details-pricing"><%= craft.price %> €</h2>
         </div>
       </div>
+    <% end %>
+  </div>
+  <div id="map"
+    style="width: 100%; height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  <% end %>
 </div>
