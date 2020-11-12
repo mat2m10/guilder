@@ -65,28 +65,12 @@
   position: relative;
   line-height: $lineHeight;
   max-height: $lineHeight * $lineCount; 
-  text-align: justify;
+  text-align: left;
   margin-right: -1em;
-  padding-right: 1em;
-  &:before {
-    content: '...';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
-    background: $bgColor;
-  }
 }
 
 .block-with-text {
-  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 5);  
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);  
 }
 
 .block-inline {
@@ -101,11 +85,4 @@
   padding-top: 0;
   flex-grow: 1;
   width: 1250px;
-}
-
-#map {
-  height: 100vh;
-  position: sticky;
-  top: 0px;
-  max-width: 600px;
 }
