@@ -14,11 +14,11 @@
 
     <div class = topright>
       <%= link_to 'View my clients', edit_user_path(@user), class: "toprightbutton"%>
-      <%= link_to 'View my Bookings', edit_user_path(@user) , class: "toprightbutton"%>
+      <%= link_to 'View my Bookings', user_all_path(@user) , class: "toprightbutton"%>
     </div>
 
     <% if @crafts != nil %>
-      <% @crafts.each do |craft| %>      
+      <% @crafts.each do |craft| %>
         <div class="craft-details">
           <%= cl_image_tag craft.photo.key%>
           <div class="craft-details-infos">
@@ -26,9 +26,9 @@
               <h2><%= craft.name %></h2>
               <p><%= craft.description %></p>
             </div>
-            <h2 class="craft-details-pricing"><%= craft.price %> €</h2>           
+            <h2 class="craft-details-pricing"><%= craft.price %> €</h2>
           </div>
-        </div>    
+        </div>
       <% end %>
     <% end %>
 </div>
