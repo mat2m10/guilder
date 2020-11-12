@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- def show
+  def show
     @user = User.find(params[:id])
     authorize @user
     @crafts = @user.crafts
@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     authorize @user
     redirect_to @user, notice: 'Your ad was successfully updated 😃'
   end
-
 
   private
 
