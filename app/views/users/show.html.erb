@@ -1,17 +1,34 @@
 <div class = container>
     <%= cl_image_tag @user.photo.key, class: "center avatar-huge"%>
-<h1 class = center> <%= @user.first_name %> <%= @user.last_name %></h1>
-<%= @user.username %>
-<p>
-<%= @user.about %>
-<%= current_user.username %>
-</p>
-<% if  @user.username == current_user.username%>
-  <%= link_to 'Edit Profile', edit_user_path(@user) %>
-<% end %>
-</div>
-<div class = topright>
-<%= link_to 'View my clients', edit_user_path(@user), class: "toprightbutton"%>
-<%= link_to 'View my Bookings', edit_user_path(@user) , class: "toprightbutton"%>
-</div>
 
+    <h1 class = center> <%= @user.first_name %> <%= @user.last_name %></h1>
+    <%= @user.username %>
+    <p>
+    <%= @user.about %>
+    <%= current_user.username %>
+    </p>
+    <% if  @user.username == current_user.username%>
+      <%= link_to 'Edit Profile', edit_user_path(@user) %>
+    <% end %>
+
+
+    <div class = topright>
+      <%= link_to 'View my clients', edit_user_path(@user), class: "toprightbutton"%>
+      <%= link_to 'View my Bookings', edit_user_path(@user) , class: "toprightbutton"%>
+    </div>
+
+    <% if @crafts != nil %>
+      <% @crafts.each do |craft| %>      
+        <div class="craft-details">
+          <%= cl_image_tag craft.photo.key%>
+          <div class="craft-details-infos">
+            <div>
+              <h2><%= craft.name %></h2>
+              <p><%= craft.description %></p>
+            </div>
+            <h2 class="craft-details-pricing"><%= craft.price %> €</h2>           
+          </div>
+        </div>    
+      <% end %>
+    <% end %>
+</div>

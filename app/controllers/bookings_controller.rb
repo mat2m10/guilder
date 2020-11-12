@@ -10,7 +10,15 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.craft = @craft
     @booking.save
-    redirect_to crafts_path, notice: 'Your request has been sent to the craftman 👍'   
+    redirect_to crafts_path, notice: 'Your request has been sent to the craftman 👍'
+  end
+
+  def show
+    @booking = Booking.find
+    @craft = Booking.craft
+    @user = Booking.user
+    @booking = Booking.new
+    authorize @craft
   end
 
   def bookings_params
