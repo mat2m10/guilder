@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def all    
+    @user = User.find(params[:user_id]) 
+    @crafts = @user.crafts
+    authorize @user
+  end
+
   def edit
     authorize @user
   end
@@ -27,5 +33,5 @@ class UsersController < ApplicationController
   def set_craft
     @user = User.find(params[:id])
   end
-
+  
 end
