@@ -4,11 +4,6 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
-  def all?
-    true
-  end
-
-
   def update?
     record == user
   end
@@ -19,7 +14,7 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 end
