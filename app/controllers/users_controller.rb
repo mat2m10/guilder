@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def all
     @user = User.find(params[:user_id])
-    @crafts = @user.crafts
     authorize @user
   end
 
