@@ -1,5 +1,6 @@
 <div class = container>
     <%= cl_image_tag @user.photo.key, class: "center avatar-huge"%>
+
     <h1 class = center> <%= @user.first_name %> <%= @user.last_name %></h1>
     <%= @user.username %>
     <p>
@@ -9,6 +10,7 @@
     <% if  @user.username == current_user.username%>
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
     <% end %>
+
 
     <div class = topright>
       <%= link_to 'View my clients', edit_user_path(@user), class: "toprightbutton"%>
