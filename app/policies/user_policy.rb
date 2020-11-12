@@ -12,6 +12,10 @@ class UserPolicy < ApplicationPolicy
     record == user
   end
 
+  def client?
+    record == user
+  end
+
   class Scope < Scope
     def resolve
       scope.where(user: user)

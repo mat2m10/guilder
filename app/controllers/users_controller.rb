@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def client
+    @user = User.find(params[:user_id])
+    authorize @user
+  end
+
   def edit
     authorize current_user
   end
