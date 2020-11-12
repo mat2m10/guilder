@@ -13,5 +13,23 @@
 <div class = topright>
 <%= link_to 'View my clients', edit_user_path(@user), class: "toprightbutton"%>
 <%= link_to 'View my Bookings', edit_user_path(@user) , class: "toprightbutton"%>
-</div>
 
+<ol>
+<% if @crafts != nil %>
+  <% @crafts.each do |craft| %>
+      <li>
+          <div class="craft-details">
+            <%= cl_image_tag craft.photo.key%>
+            <div class="craft-details-infos">
+              <div>
+                <h2><%= craft.name %></h2>
+                <p><%= craft.description %></p>
+              </div>
+              <h2 class="craft-details-pricing"><%= craft.price %> €</h2>           
+            </div>
+          </div>
+      </li>
+  <% end %>
+<% end %>
+</ol>
+</div>
