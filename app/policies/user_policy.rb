@@ -3,6 +3,9 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+  def all?
+    true
+  end
   class Scope < Scope
     def resolve
       scope.all
