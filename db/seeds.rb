@@ -14,7 +14,7 @@ today = DateTime.now
 first = User.create(email: "b@t.man", username: "batman", first_name: "Bruce", last_name: "Wayne", password:'123456')
 file = URI.open('https://www.pngkit.com/png/detail/6-61591_batman-icon-jira-avatar.png')
 first.photo.attach(io: file, filename: 'bat.png', content_type: 'image/png')
-first.description = "I am Batman!!!"
+first.about = "I am Batman!!!"
 first.save!
 
 10.times do
