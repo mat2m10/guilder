@@ -1,10 +1,5 @@
 class BookingsController < ApplicationController
   before_action :set_craft, only: %i[new create]
-
-  def index
-    @bookings = policy_scope(Booking)
-  end
-
   def new
     @booking = Booking.new
     authorize @booking
@@ -19,17 +14,18 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find
     @craft = Booking.craft
     @user = Booking.user
     @booking = Booking.new
     authorize @craft
   end
 
-  private
-
   def bookings_params
     params.require(:booking).permit(:date, :description)
   end
+
+  private
 
   def set_craft
     @craft = Craft.find(params[:craft_id])
