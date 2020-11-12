@@ -2,6 +2,7 @@ class UsersController < ApplicationController
  def show
     @user = User.find(params[:id])
     authorize @user
+    @crafts = @user.crafts
   end
 
   def all
@@ -28,5 +29,4 @@ class UsersController < ApplicationController
     # Celui qui cree le craft c'est le current user
     params.require(:user).permit(:description, :username, :about, :first_name, :last_name, :photo)
   end
-
 end
