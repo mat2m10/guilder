@@ -1,13 +1,24 @@
 class UsersController < ApplicationController
- def show
+  def show
     @user = User.find(params[:id])
     authorize @user
+    @crafts = @user.crafts
   end
 
   def all
     @user = User.find(params[:user_id])
-    @crafts = @user.crafts
     authorize @user
+  end
+
+  def index
+    @user = current_user
+    @clients = policy_scope(User)
+
+    @clients = @clients.where("bookings.created_at > ?", params[:created_after]) if params[:created_after]
+    respond_to do |format|
+      format.html
+      format.json { render json: { clients: @clients }}
+    end
   end
 
   def edit
@@ -21,12 +32,10 @@ class UsersController < ApplicationController
     redirect_to @user, notice: 'Your ad was successfully updated 😃'
   end
 
-
   private
 
   def user_params
     # Celui qui cree le craft c'est le current user
     params.require(:user).permit(:description, :username, :about, :first_name, :last_name, :photo)
   end
-
 end

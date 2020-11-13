@@ -65,28 +65,12 @@
   position: relative;
   line-height: $lineHeight;
   max-height: $lineHeight * $lineCount; 
-  text-align: justify;
+  text-align: left;
   margin-right: -1em;
-  padding-right: 1em;
-  &:before {
-    content: '...';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
-    background: $bgColor;
-  }
 }
 
 .block-with-text {
-  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 5);  
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3);  
 }
 
 .block-inline {
@@ -103,9 +87,48 @@
   width: 1250px;
 }
 
-#map {
-  height: 100vh;
-  position: sticky;
-  top: 0px;
-  max-width: 600px;
+.clients-crafts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.name-font {
+  font-family: $name-font;
+}
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .clients-crafts {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .clients-crafts {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .clients-crafts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .clients-crafts {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .clients-crafts {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

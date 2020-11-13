@@ -4,18 +4,17 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
-  def all?
-    true
-  end
-
-
   def update?
     record == user
   end
-  
+
+  def all?
+    record == user
+  end
+
   class Scope < Scope
     def resolve
-      scope.all
+      user.clients
     end
   end
 end

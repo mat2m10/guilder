@@ -9,8 +9,18 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     authorize @booking
     @booking.craft = @craft
+    @booking.user = current_user
+    @booking.date = '29/10/1923'
     @booking.save
-    redirect_to crafts_path, notice: 'Your request has been sent to the craftman 👍'   
+    redirect_to crafts_path, notice: 'Your request has been sent to the craftman 👍'
+  end
+
+  def show
+    @booking = Booking.find
+    @craft = Booking.craft
+    @user = Booking.user
+    @booking = Booking.new
+    authorize @craft
   end
 
   def bookings_params

@@ -12,10 +12,13 @@
   </head>
 
   <body>
+    <div data-controller="notifications">
+      <div class="notifications" data-target="list">
+      </div>
+    </div>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render 'shared/footer' %>
-    <%= render 'pages/searchform' %>
   </body>
 </html>
