@@ -5,16 +5,49 @@
       <div class="container">
         <div class="clients-crafts">
           <% client.booked_crafts.select{ |booked_craft| booked_craft.user == @user}.each do |craft| %>          
-              <div class="craft-details">
-                <%= cl_image_tag craft.photo.key%>
-                  <div class="craft-details-infos">
-                    <div>
-                      <h2><%= craft.name %></h2>
-                      <p><%= craft.description %></p>
+            <div class="user-all">
+              <div class="wrapper">
+                <div class="card">
+                  <input type="checkbox" id="craft-<%=craft.id%>-<%=client.id%>" class="more" aria-hidden="true">
+                  <div class="content">
+                        <div class="front" style="background-image: url(<%= cl_image_path craft.photo.key%>)">
+                            <div class="inner">
+                                <h2><%= craft.name %></h2>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <label for="craft-<%=craft.id%>-<%=client.id%>" class="button" aria-hidden="true">
+                                    More
+                                </label>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="inner">
+                                <div class="info">
+                                    <span><%= craft.bookings.count %></span>
+                                    <div class="icon">
+                                        <i class="fas fa-book-open"></i>
+                                        <span><%= pluralize craft.bookings.count, "booking" %></span>
+                                    </div>
+                                </div>
+                            
+                                <div class="description">
+                                <p><%= craft.description %></p>
+                                </div>
+                                <div class="price"><%= craft.price.floor %>€ / day</div>
+                                <label for="craft-<%=craft.id%>-<%=client.id%>" class="button return" aria-hidden="true">
+                                    <i class="fas fa-arrow-left"></i>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                      <h2 class="craft-details-pricing"><%= craft.price %> €</h2>
-                  </div>            
-              </div>                
+                  </div>
+              </div>
+            </div>               
           <% end %>
         </div>     
       </div>    
