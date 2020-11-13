@@ -2,30 +2,36 @@
 .homepage {
   background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://images.unsplash.com/photo-1506806732259-39c2d0268443?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80");
   background-size: cover;
- }
+  
+  h1 {
+    padding-top: 100px;
+    font-family: 'Stalinist One', cursive;
+    font-weight: bold;
+    font-size: 80px;
+  }
 
- .container {
-   height: 100vh;
- }
+  .container {
+    height: 100vh;
+  }
 
-.form-inline {
-  margin-top: 40vh;
+  .form-inline {
+    margin-top: 20vh;
+  }
+
+  .form-inline .form-new {
+    width: 300px;
+  }
+
+  .this-one {
+    background-color: #644d86;
+    border: none;
+    width: 100px;
+  }
+
+  .guilder-header {
+    color: white;
+    display: block;
+    margin-left: 50px;
+  }
+
 }
-
-.form-inline .form-new {
-  width: 300px;
-}
-
-.this-one {
-  background-color: #644d86;
-  border: none;
-  width: 100px;
-}
-
-.guilder-header {
-  color: white;
-  display: block;
-  margin-left: 50px;
-}
-
-
