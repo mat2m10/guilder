@@ -42,9 +42,9 @@ end
   file = URI.open('https://picsum.photos/200')
   craft = Craft.create(name: Faker::Commerce.department, price: rand(100), user_id: User.all.sample.id.to_i, description: string)
   craft.photo.attach(io: file, filename: '.png', content_type: 'image/png')
-  craft.latitude = lat_init + (rand * dist)
-  craft.longitude = long_init + (rand * dist)
-  craft.address = Faker::Address.street_address
+  craft.latitude = lat_init + rand/10
+  craft.longitude = long_init + rand/10
+  # craft.address = Faker::Address.street_address
   craft.save!
 end
 
