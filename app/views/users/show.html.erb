@@ -1,6 +1,7 @@
 <div class = container>
+  <% if @user.photo.key %> 
     <%= cl_image_tag @user.photo.key, class: "center avatar-huge"%>
-
+  <% end %>
     <h1 class = center> <%= @user.first_name %> <%= @user.last_name %></h1>
     <p class="center"><%= @user.about %></p>
     <div class="topleft">
@@ -23,6 +24,7 @@
             <div class="card">
                 <input type="checkbox" id="craft-<%=craft.id%>" class="more" aria-hidden="true">
                 <div class="content">
+                  <% if craft.photo.key %>
                     <div class="front" style="background-image: url(<%= cl_image_path craft.photo.key%>)">
                         <div class="inner">
                             <h2><%= craft.name %></h2>
@@ -58,6 +60,7 @@
                             </label>
                         </div>
                     </div>
+                  <% end %>
                 </div>
             </div>
           </div>
