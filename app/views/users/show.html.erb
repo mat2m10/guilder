@@ -9,11 +9,12 @@
       <%= link_to 'Edit Profile', edit_user_path(@user) %>
     <% end %>
 
-
+    <% if  @user.username == current_user.username%>
     <div class = topright>
       <%= link_to 'View my clients', clients_path, class: "toprightbutton"%>
       <%= link_to 'View my Bookings', user_all_path(@user) , class: "toprightbutton"%>
     </div>
+    <% end %>
 
     <% if @crafts != nil %>
       <% @crafts.each do |craft| %>
@@ -46,7 +47,7 @@
                                     <span><%= pluralize craft.bookings.count, "booking" %></span>
                                 </div>
                             </div>
-                        
+
                             <div class="description">
                                 <p><%= craft.description %></p>
                             </div>
