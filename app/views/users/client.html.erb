@@ -1,8 +1,21 @@
 <h1 class = "center"> My Clients </h1>
 <% @user.clients.each do |client| %>
-  <h2 class = "center">
-    <%= "#{client.first_name} #{client.last_name}" %>
-
-  </h2>
-   <%= cl_image_tag client.photo.key, class: "center avatar-huge"%>
+  <h2 class = "center name-font"> <%= "#{client.first_name} #{client.last_name}" %> </h2>
+     <%= cl_image_tag client.photo.key, class: "center avatar-huge"%>
+      <div class="container">
+        <div class="clients-crafts">
+          <% client.booked_crafts.select{ |booked_craft| booked_craft.user == @user}.each do |craft| %>          
+              <div class="craft-details">
+                <%= cl_image_tag craft.photo.key%>
+                  <div class="craft-details-infos">
+                    <div>
+                      <h2><%= craft.name %></h2>
+                      <p><%= craft.description %></p>
+                    </div>
+                      <h2 class="craft-details-pricing"><%= craft.price %> €</h2>
+                  </div>            
+              </div>                
+          <% end %>
+        </div>     
+      </div>    
   <% end %>
