@@ -10,9 +10,14 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  def client
-    @user = User.find(params[:user_id])
-    authorize @user
+  def index
+    @clients = policy_scope(User)
+
+    @clients = @clients.where("bookings.created_at > ?", params[:created_after]) if params[:created_after]
+    respond_to do |format|
+      format.html
+      format.json { render json: { clients: @clients }}
+    end
   end
 
   def edit
