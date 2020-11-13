@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = current_user
     @clients = policy_scope(User)
 
-    @clients = @clients.where("bookings.created_at > ?", params[:created_after]) if params[:created_after]
+    @clients = @clients.where("bookings.created_at > ?", Time.at(params[:created_after].to_f)) if params[:created_after]
     respond_to do |format|
       format.html
       format.json { render json: { clients: @clients }}
