@@ -34,3 +34,19 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
 </div>
+
+<%= form_tag(crafts_index_path, method: "get") do %>
+  <%= label_tag(:query, "Search for:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% @crafts.each do |craft| %>
+    <tr>
+      <td><%= craft.name %></td>
+    </tr>
+  <% end %>
+</table>
