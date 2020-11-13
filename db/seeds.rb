@@ -6,9 +6,6 @@ Booking.destroy_all
 Craft.destroy_all
 User.destroy_all
 
-lat_init = 50.8461755
-long_init = 4.4055443
-dist = 0.05303020000000025
 today = DateTime.now
 
 first = User.create(email: "b@t.man", username: "batman", first_name: "Bruce", last_name: "Wayne", password:'123456')
@@ -36,15 +33,14 @@ end
 
 10.times do
   string = ""
+  address_array = ["Romeinsesteenweg 950, 1780 Wemmel","Avenue Charles Quint, 560 Parking Carrefour 1082, 8 Brussel","Rue du Progrès 76/1030, 1030 Brussel","Rue du Marché Aux Herbes 101, 1000 Bruxelles","Boulevard De La Woluwe 70 20 BE, b25, 1200 Brussel","Rue Veydt 43, 1050 Bruxelles","Gare du Midi 46 b 23, 1060 Bruxelles","Boulevard Boulevard Anspach 56-58 1000, 1 Bruxelles","Chaussée de Boondael 462 - Ixelles / Ixelles, 1050 Brussel","Rue Veydt 43, 1050 Bruxelles","Avenue de la Toison d'Or 4, 1050 Ixelles","Centraal Station, Rue de la Madeleine, 1000 Bruxelles","Leuvensesteenweg 12, 1932 Zaventem","Chaussée de Haecht 1420, 1130 Bruxelles"]
   10.times do
     string += "#{Faker::TvShows::GameOfThrones.quote} "
   end
   file = URI.open('https://picsum.photos/200')
   craft = Craft.create(name: Faker::Commerce.department, price: rand(100), user_id: User.all.sample.id.to_i, description: string)
   craft.photo.attach(io: file, filename: '.png', content_type: 'image/png')
-  craft.latitude = lat_init + rand/10
-  craft.longitude = long_init + rand/10
-  # craft.address = Faker::Address.street_address
+  craft.address = address_array.sample
   craft.save!
 end
 
