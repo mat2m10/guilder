@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def all
     @user = User.find(params[:user_id])
     authorize @user
+    @crafts = @user.crafts
   end
 
   def index
