@@ -12,11 +12,11 @@ class CraftsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
       }
       
-      if params [:querry].present?
-        @crafts = Craft.search_by_name(params[:querry])
+      if params [:query].present?
+        @crafts = Craft.search_by_name(params[:query])
       else
         @crafts = Craft.all 
-    end
+      end
   end
 
   def show
