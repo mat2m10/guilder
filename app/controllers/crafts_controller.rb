@@ -11,6 +11,16 @@ class CraftsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
       }
     end
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR address ILIKE :query"
+      @crafts = Craft.where(sql_query, query: "%#{params[:query]}%")
+    elsif params[:address].present?
+      @crafts = Craft.near(params[:address], 2)
+    else  
+      @crafts = Craft.all
+    end
+
   end
 
   def show
