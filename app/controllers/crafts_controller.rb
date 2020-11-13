@@ -13,9 +13,9 @@ class CraftsController < ApplicationController
       }
       
       if params [:querry].present?
-        @crafts = Crafts.search_by_name(params[:querry])
+        @crafts = Craft.search_by_name(params[:querry])
       else
-        @crafts = Crafts.all 
+        @crafts = Craft.all 
     end
   end
 
