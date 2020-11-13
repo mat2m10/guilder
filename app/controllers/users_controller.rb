@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
     @clients = policy_scope(User)
 
     @clients = @clients.where("bookings.created_at > ?", params[:created_after]) if params[:created_after]
