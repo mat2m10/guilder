@@ -11,12 +11,6 @@ class CraftsController < ApplicationController
         lng: craft.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
       }
-
-      if params[:querry].present?
-        @crafts = Craft.search_by_name(params[:querry])
-      else
-        @crafts = Craft.all
-      end
     end
   end
 
