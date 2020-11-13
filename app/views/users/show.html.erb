@@ -2,18 +2,18 @@
     <%= cl_image_tag @user.photo.key, class: "center avatar-huge"%>
 
     <h1 class = center> <%= @user.first_name %> <%= @user.last_name %></h1>
-    <%= @user.username %>
-    <p><%= @user.about %></p>
-
-    <% if  @user.username == current_user.username%>
-      <%= link_to 'Edit Profile', edit_user_path(@user) %>
-    <% end %>
-
-    <% if  @user.username == current_user.username%>
-    <div class = topright>
-      <%= link_to 'View my clients', clients_path, class: "toprightbutton"%>
-      <%= link_to 'View my Bookings', user_all_path(@user) , class: "toprightbutton"%>
+    <p class="center"><%= @user.about %></p>
+    <div class="topleft">
+      <% if  @user.username == current_user.username%>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: 'toprightbutton' %>
+      <% end %>
     </div>
+
+    <% if  @user.username == current_user.username%>
+        <div class = "topright">
+        <%= link_to 'View my clients', clients_path, class: "toprightbutton"%>
+        <%= link_to 'View my Bookings', user_all_path(@user) , class: "toprightbutton"%>
+        </div>
     <% end %>
 
     <% if @crafts != nil %>
