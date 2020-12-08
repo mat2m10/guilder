@@ -2,6 +2,8 @@ require 'faker'
 require "open-uri"
 require 'date'
 
+puts "Destroying current bookings/crafts/users..."
+
 Booking.destroy_all
 Craft.destroy_all
 User.destroy_all
@@ -11,11 +13,13 @@ long_init = 4.4055443
 dist = 0.05303020000000025
 today = DateTime.now
 
+puts "Creating batman user..."
+
 first = User.create(email: "b@t.man", username: "batman", first_name: "Bruce", last_name: "Wayne", password:'123456')
-file = URI.open('https://www.pngkit.com/png/detail/6-61591_batman-icon-jira-avatar.png')
-first.photo.attach(io: file, filename: 'bat.png', content_type: 'image/png')
 first.about = "I am Batman!!!"
 first.save!
+
+puts "Creating 10 other LOTR users..."
 
 10.times do
   about = ""
@@ -34,6 +38,8 @@ first.save!
   user.save!
 end
 
+puts "Creating 10 random crafts..."
+
 10.times do
   string = ""
   10.times do
@@ -48,6 +54,8 @@ end
   craft.save!
 end
 
+puts "Creating 10 bookings..."
+
 10.times do
   date = today + rand(1000)
   user = User.all.sample.id.to_i
@@ -59,4 +67,6 @@ end
   booking = Booking.create(date: date, user_id: user, craft_id: craft, description: text)
   booking.save!
 end
+
+puts "Done bro!!!!!"
 
