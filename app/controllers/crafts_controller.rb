@@ -6,13 +6,7 @@ class CraftsController < ApplicationController
     @users = User.all
     @crafts = policy_scope(Craft)
 
-    @markers = @crafts.geocoded.map do |craft|
-      {
-        lat: craft.latitude,
-        lng: craft.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
-      }
-    end
+    put_markers
   end
 
   def show
@@ -57,5 +51,16 @@ class CraftsController < ApplicationController
 
   def set_craft
     @craft = Craft.find(params[:id])
+  end
+
+  def put_markers
+    @markers = @crafts.geocoded.map do |craft|
+      {
+        lat: craft.latitude,
+        lng: craft.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft }),
+        image_url: helpers.asset_url('blacksmith.png')
+      }
+    end
   end
 end

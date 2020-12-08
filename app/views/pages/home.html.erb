@@ -1,16 +1,16 @@
-<div class="home-banner w-100">
+<div class="home-banner w-100 align-items-center">
     <div class="container">
-        <h1 class="text-white text-center">Support your local craftsmen</h1>
-    </div>
-    <div class="row justify-content-center">
-    <%= form_tag crafts_path, method: :get , class:'form-inline mt-3' do %>
-        <%= text_field_tag :query,
-            params[:query],
-            class: "form-control form-new theform",
-            placeholder: "Find a service by category"
-        %>
-        <%= submit_tag "Search", class: "btn btn-primary this-one mx-2" %>
-    <% end %>
+        <h1 class="text-white text-center mb-3">Support your local craftsmen</h1>
+        <div class="row justify-content-center mt-5">
+            <%= form_tag crafts_path, method: :get , class:'form-inline mt-3' do %>
+                <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control form-new theform",
+                    placeholder: "Find a service by category"
+                %>
+                <%= submit_tag "Search", class: "btn btn-primary this-one mx-2" %>
+            <% end %>
+        </div>
     </div>
 </div>    
 
