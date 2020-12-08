@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :edit, :update] do
     get "all"
-    get "client"
   end
+  resources :clients, only: [:index], controller: :users
   resources :bookings, only: [:index]
 end

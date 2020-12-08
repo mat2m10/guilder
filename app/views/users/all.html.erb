@@ -1,3 +1,47 @@
-<% @user.bookings.each do |booking| %>
-  <%= booking.craft_id %>
+<% @user.bookings.each do |booking| %> 
+  <div class="user-all">
+  <div class="wrapper">
+    <div class="card">
+      <input type="checkbox" id="booking-<%=booking.id%>" class="more" aria-hidden="true">
+      <div class="content">
+        <% if booking.craft.photo.key %>
+                <div class="front" style="background-image: url(<%= cl_image_path booking.craft.photo.key%>)">
+                    <div class="inner">
+                        <h2><%= booking.craft.name %></h2>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <label for="booking-<%=booking.id%>" class="button" aria-hidden="true">
+                            More
+                        </label>
+                    </div>
+                </div>
+                <div class="back">
+                    <div class="inner">
+                        <div class="info">
+                            <span><%= booking.craft.bookings.count %></span>
+                            <div class="icon">
+                                <i class="fas fa-book-open"></i>
+                                <span><%= pluralize booking.craft.bookings.count, "booking" %></span>
+                            </div>
+                        </div>
+                    
+                        <div class="description">
+                        <p><%= booking.craft.description %></p>
+                        </div>
+                        <div class="price"><%= booking.craft.price.floor %>€ / day</div>
+                        <label for="booking-<%=booking.id%>" class="button return" aria-hidden="true">
+                            <i class="fas fa-arrow-left"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+          <% end %>
+      </div>
+  </div>
+</div>   
 <% end %>

@@ -7,6 +7,15 @@ class CraftsController < ApplicationController
     @crafts = policy_scope(Craft)
 
     put_markers
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR address ILIKE :query"
+      @crafts = Craft.where(sql_query, query: "%#{params[:query]}%")
+    elsif params[:address].present?
+      @crafts = Craft.near(params[:address], 2)
+    else  
+      @crafts = Craft.all
+    end
   end
 
   def show

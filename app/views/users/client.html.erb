@@ -1,8 +1,0 @@
-<h1 class = "center"> My Clients </h1>
-<% @user.clients.each do |client| %>
-  <h2 class = "center">
-    <%= "#{client.first_name} #{client.last_name}" %>
-
-  </h2>
-   <%= cl_image_tag client.photo.key, class: "center avatar-huge"%>
-  <% end %>

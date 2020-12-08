@@ -1,6 +1,8 @@
 
 <%= link_to craft_path(craft) do %>
+  <% if craft.photo.key %> 
     <%= cl_image_tag craft.photo.key %>
+  <% end %>
 <% end %>
 
 <h2><%= craft.name %></h2>
