@@ -1,3 +1,18 @@
-<%# <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p> %>
-<%=  link_to "Browse", crafts_path ,class: "toprightbutton"%>
+<div class="home-banner w-100">
+    <div class="container">
+        <h1 class="text-white text-center">Support your local craftsmen</h1>
+    </div>
+    <div class="row justify-content-center">
+    <%= form_tag crafts_path, method: :get , class:'form-inline mt-3' do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control form-new theform",
+            placeholder: "Find a service by category"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary this-one mx-2" %>
+    <% end %>
+    </div>
+</div>    
+
+
+
