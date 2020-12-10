@@ -2,17 +2,21 @@ require 'faker'
 require "open-uri"
 require 'date'
 
+puts "Destroying current bookings/crafts/users..."
+
 Booking.destroy_all
 Craft.destroy_all
 User.destroy_all
 
 today = DateTime.now
 
+puts "Creating batman user..."
+
 first = User.create(email: "b@t.man", username: "batman", first_name: "Bruce", last_name: "Wayne", password:'123456')
-file = URI.open('https://www.pngkit.com/png/detail/6-61591_batman-icon-jira-avatar.png')
-first.photo.attach(io: file, filename: 'bat.png', content_type: 'image/png')
 first.about = "I am Batman!!!"
 first.save!
+
+puts "Creating 10 other LOTR users..."
 
 10.times do
   about = ""
@@ -31,6 +35,8 @@ first.save!
   user.save!
 end
 
+puts "Creating 10 random crafts..."
+
 10.times do
   string = ""
   address_array = ["Romeinsesteenweg 950, 1780 Wemmel","Avenue Charles Quint, 560 Parking Carrefour 1082, 8 Brussel","Rue du Progrès 76/1030, 1030 Brussel","Rue du Marché Aux Herbes 101, 1000 Bruxelles","Boulevard De La Woluwe 70 20 BE, b25, 1200 Brussel","Rue Veydt 43, 1050 Bruxelles","Gare du Midi 46 b 23, 1060 Bruxelles","Boulevard Boulevard Anspach 56-58 1000, 1 Bruxelles","Chaussée de Boondael 462 - Ixelles / Ixelles, 1050 Brussel","Rue Veydt 43, 1050 Bruxelles","Avenue de la Toison d'Or 4, 1050 Ixelles","Centraal Station, Rue de la Madeleine, 1000 Bruxelles","Leuvensesteenweg 12, 1932 Zaventem","Chaussée de Haecht 1420, 1130 Bruxelles"]
@@ -44,6 +50,8 @@ end
   craft.save!
 end
 
+puts "Creating 10 bookings..."
+
 10.times do
   date = today + rand(1000)
   user = User.all.sample.id.to_i
@@ -55,4 +63,6 @@ end
   booking = Booking.create(date: date, user_id: user, craft_id: craft, description: text)
   booking.save!
 end
+
+puts "Done bro!!!!!"
 

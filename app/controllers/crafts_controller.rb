@@ -1,16 +1,12 @@
 class CraftsController < ApplicationController
   before_action :set_craft, only: %i[edit update show destroy]
+  skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create ]
 
   def index
     @users = User.all
     @crafts = policy_scope(Craft)
-    @markers = @crafts.geocoded.map do |craft|
-      {
-        lat: craft.latitude,
-        lng: craft.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft })
-      }
-    end
+
+    put_markers
 
     if params[:query].present?
       sql_query = "name ILIKE :query OR address ILIKE :query"
@@ -20,7 +16,6 @@ class CraftsController < ApplicationController
     else  
       @crafts = Craft.all
     end
-
   end
 
   def show
@@ -65,5 +60,16 @@ class CraftsController < ApplicationController
 
   def set_craft
     @craft = Craft.find(params[:id])
+  end
+
+  def put_markers
+    @markers = @crafts.geocoded.map do |craft|
+      {
+        lat: craft.latitude,
+        lng: craft.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft }),
+        image_url: helpers.asset_url('blacksmith.png')
+      }
+    end
   end
 end
