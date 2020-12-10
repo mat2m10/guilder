@@ -67,13 +67,15 @@ class CraftsController < ApplicationController
   end
 
   def put_markers
-    @markers = @crafts.geocoded.map do |craft|
-      {
-        lat: craft.latitude,
-        lng: craft.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { craft: craft }),
-        image_url: helpers.asset_url('blacksmith.png')
-      }
+    if @crafts.present?
+      @markers = @crafts.geocoded.map do |craft|
+        {
+          lat: craft.latitude,
+          lng: craft.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { craft: craft }),
+          image_url: helpers.asset_url('blacksmith.png')
+        }
+      end
     end
   end
 end
