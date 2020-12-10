@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @clients = @clients.where("bookings.created_at > ?", Time.at(params[:created_after].to_f)) if params[:created_after]
     respond_to do |format|
       format.html
-      format.json { render json: { clients: @clients }}
+      format.json { render json: { clients: @clients } }
     end
   end
 

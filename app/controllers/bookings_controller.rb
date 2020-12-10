@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_craft, only: %i[new create]
-  skip_before_action :authenticate_user!, only: [ :show, :new, :create ]
+  skip_before_action :authenticate_user!, only: %i[show new create]
 
   def new
     @booking = Booking.new

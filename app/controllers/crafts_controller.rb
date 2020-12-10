@@ -1,9 +1,9 @@
 class CraftsController < ApplicationController
   before_action :set_craft, only: %i[edit update show destroy]
-  skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create ]
+  before_action :set_users, only: %i[index]
+  skip_before_action :authenticate_user!, only: %i[index show new create]
 
   def index
-    @users = User.all
     @crafts = policy_scope(Craft)
 
     put_markers
@@ -13,7 +13,7 @@ class CraftsController < ApplicationController
       @crafts = Craft.where(sql_query, query: "%#{params[:query]}%")
     elsif params[:address].present?
       @crafts = Craft.near(params[:address], 2)
-    else  
+    else
       @crafts = Craft.all
     end
   end
@@ -60,6 +60,10 @@ class CraftsController < ApplicationController
 
   def set_craft
     @craft = Craft.find(params[:id])
+  end
+
+  def set_users
+    @users = User.all
   end
 
   def put_markers
