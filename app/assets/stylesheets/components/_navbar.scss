@@ -72,3 +72,15 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.btnnew {
+  background-color: #ef6d33;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  &:hover {
+    background-color: #e4682e;
+    color: black;
+  }
+  padding: 10px;
+}
