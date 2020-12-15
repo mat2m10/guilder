@@ -10,3 +10,48 @@
     display: none;
   }
 }
+
+#map {
+  margin-top: 50px;
+}
+
+.card-craft {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  transition: all ease .2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.card-craft > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-craft h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-craft p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-craft .card-craft-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.mapboxgl-popup-content {
+  padding: 0;
+}

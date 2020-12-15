@@ -1,9 +1,14 @@
-
 <%= link_to craft_path(craft) do %>
-  <% if craft.photo.key %> 
-    <%= cl_image_tag craft.photo.key %>
-  <% end %>
+  <div class="card-craft">
+    <% if craft.photo.attached? %>
+      <%= cl_image_tag craft.photo.key %>
+    <% end %>
+    <div class="card-craft-infos">
+      <div>
+        <h2><%= craft.name %></h2>
+        <p class="text-dark"><%= craft.address %></p>
+      </div>
+      <h2 class="text-dark">€ <%= craft.price %></h2>
+    </div>
+  </div>
 <% end %>
-
-<h2><%= craft.name %></h2>
-<p><%= craft.address %></p>
