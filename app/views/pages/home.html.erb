@@ -1,8 +1,10 @@
 <div class="home-banner w-100 align-items-center">
     <div class="container">
-        <h1 class="text-white text-center mb-3">Support your local craftsmen</h1>
-        <div class="row justify-content-center mt-5">
-            <%= form_tag crafts_path, method: :get , class:'form-inline mt-3' do %>
+    <br>
+    <br>
+        <div class="row justify-content-left mt-5">
+            <h1 class="mb-3 landing">Support your local craftsmen</h1>
+            <%= form_tag crafts_path, method: :get , class:'form-inline mt-5' do %>
                 <%= text_field_tag :query,
                     params[:query],
                     class: "form-control form-new theform",
