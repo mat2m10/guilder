@@ -1,6 +1,68 @@
+.navbar {
+  height: 8vh;
+  padding: 0 20px;
+  ul li a, .nav-link {
+    color: #fff;
+  }
+
+  .authentication {
+    ul li {
+      line-height: 50px;
+      margin-left: 10px;
+    }
+  }
+
+}
+
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: $light-gray;
+  background: rgb(53 , 53 ,53);
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+  background-color: white;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.nav-link:hover {
+  color:  #ef6d34;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 60px;
+}
+
+#query {
+  width: 0vw;
+  border: none;
+}
+
+.input {
+  width: 0vw;
+  border: none;
+}
+
+#secret:focus-within {
+  width: 20vw;
+  transition: 10s;
+
+  #query {
+  width: 8vw;
+  border: none;
+  padding: 0;
+}
+
+.input {
+  width: 5vw;
+  border: none;
+}
+}
+
+.dropdown-toggle {
+  cursor: pointer;
 }
 
 .navbar-lewagon .navbar-collapse {
