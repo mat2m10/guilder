@@ -15,9 +15,13 @@
       <div class="notifications" data-target="list">
       </div>
     </div>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <div class="page-wrapper">
+      <%= render 'shared/navbar' %>
+      <div class="content-wrap">
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+        <%= render 'shared/footer' %>
+      </div>
+    </div>
   </body>
 </html>
