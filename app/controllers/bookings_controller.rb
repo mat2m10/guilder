@@ -35,3 +35,4 @@ class BookingsController < ApplicationController
     @craft = Craft.find(params[:craft_id])
   end
 end
+
