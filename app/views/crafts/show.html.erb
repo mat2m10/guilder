@@ -9,8 +9,8 @@
          <p><%= @craft.description %></p>
         </div>
         <h2 class="craft-details-pricing">€<%= @craft.price %></h2>
-        <% if @craftman.photo.key %>
-          <%= cl_image_tag @craftman.photo.key, class: "craft-details-user avatar-bordered" %>
+        <% if @craft.photo.key %>
+          <%= cl_image_tag @craft.photo.key, class: "craft-details-user avatar-bordered" %>
         <% end %>
       </div>
     </div>

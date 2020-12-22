@@ -8,21 +8,32 @@
             <h2 class="block-inline"><%= craft.name %></h2>
             <p class="block-with-text text-left"><%= craft.description %></p>
           </div>
-          <% if user_path(craft.user_id).present? %>
-            <%= link_to user_path(craft.user_id) do %>
-              <%= cl_image_tag craft.photo.key, class: "card-trip-user avatar-bordered"  %>
-            <% end %>
+
+          <% if craft.user.photo.attached? %>
+              <%= link_to user_path(craft.user_id) do %>
+                <%= cl_image_tag craft.user.photo.key, class: "card-trip-user avatar-bordered"  %>
+              <% end %>
+          <% else %>
+              <img class="card-trip-user avatar-bordered" src="<%=asset_path 'noavatar.png' %>" />
+          <% end %>
+
+          <div>
+
             <% if policy(craft).show? %>
-              <%= link_to "More", craft_path(craft), class: 'btn btn-info my-1' %>
+                <%= link_to "More", craft_path(craft), class: 'btn btn-info my-2' %>
             <% end %>
-          <% end %>
-          <% if policy(craft).edit? %>
-            <%= link_to "Edit", edit_craft_path(craft), class: 'btn btn-warning my-1' %>
-          <% end %>
-          <% if policy(craft).destroy? %>
-            <%= link_to "Delete", craft_path(craft), method: :delete,
-            data: { confirm: "Are you sure?" }, class: 'btn btn-danger my-1' %>
-          <% end %>
+
+            <% if policy(craft).edit? %>
+              <%= link_to "Edit", edit_craft_path(craft), class: 'btn btn-warning my-2' %>
+            <% end %>
+
+            <% if policy(craft).destroy? %>
+              <%= link_to "Delete", craft_path(craft), method: :delete,
+              data: { confirm: "Are you sure?" }, class: 'btn btn-danger my-2' %>
+            <% end %>
+
+          </div>
+
         </div>
       </div>
     <% end %>
