@@ -23,13 +23,13 @@
     font-size: 14px;
     opacity: .7;
     margin: 0;
+    text-align: justify;
   }
   
   
   .craft-details-infos {
     display: flex;
     justify-content: space-around;
-    align-items: flex-end;
     position: relative;
   }
 
@@ -41,7 +41,7 @@
   }
 
 .craft-width {
-  width: 550px;
+  flex-grow: 1;
 }
 
 .craft-details-bottom {
@@ -55,10 +55,12 @@
 .craft-details-pricing {
   display: inline-block;
   text-align: center;
-  vertical-align: top;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
+  margin-top: 23px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 // To have text cropped correctly in index
