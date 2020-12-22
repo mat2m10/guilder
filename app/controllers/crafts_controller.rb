@@ -92,7 +92,7 @@ class CraftsController < ApplicationController
           lat: craft.latitude,
           lng: craft.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { craft: craft }),
-          image_url: helpers.asset_url('blacksmith.png')
+          image_url: helpers.asset_url('orangesmith.png')
         }
       end
     end
