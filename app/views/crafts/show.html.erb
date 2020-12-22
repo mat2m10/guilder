@@ -4,13 +4,13 @@
         <%= cl_image_tag @craft.photo.key%>
       <% end %>
       <div class="craft-details-infos">
-        <div>
+        <div class="craft-width">
          <h2><%= @craft.name %></h2>
          <p><%= @craft.description %></p>
         </div>
-        <h2 class="craft-details-pricing"><%= @craft.price %> €</h2>
-        <% if @craftman.photo.key %>
-          <%= cl_image_tag @craftman.photo.key, class: "craft-details-user avatar-bordered" %>
+        <h2 class="craft-details-pricing">€<%= @craft.price %></h2>
+        <% if @craft.photo.key %>
+          <%= cl_image_tag @craft.photo.key, class: "craft-details-user avatar-bordered" %>
         <% end %>
       </div>
     </div>
