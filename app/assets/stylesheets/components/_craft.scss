@@ -15,13 +15,12 @@
   }
   
   h2 {
-    font-size: 16px;
+    font-size: 21px;
     font-weight: bold;
-    margin: 0;
   }
   
   p {
-    font-size: 12px;
+    font-size: 14px;
     opacity: .7;
     margin: 0;
   }
@@ -33,14 +32,17 @@
     align-items: flex-end;
     position: relative;
   }
-  
+
 }
   .craft-details-user {
     position: absolute;
     right: 16px;
-    top: -40px;
-    width: 40px;
+    top: -60px;
   }
+
+.craft-width {
+  width: 550px;
+}
 
 .craft-details-bottom {
   display: flex;
@@ -53,7 +55,7 @@
 .craft-details-pricing {
   display: inline-block;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: top;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
