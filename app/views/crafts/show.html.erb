@@ -9,9 +9,13 @@
          <p><%= @craft.description %></p>
         </div>
         <h2 class="craft-details-pricing">€<%= @craft.price %></h2>
-        <% if @craft.photo.key %>
-          <%= cl_image_tag @craft.photo.key, class: "craft-details-user avatar-bordered" %>
-        <% end %>
+          <% if @craft.user.photo.attached? %>
+              <%= link_to user_path(@craft.user_id) do %>
+                <%= cl_image_tag @craft.user.photo.key, class: "card-details-user avatar-bordered"  %>
+              <% end %>
+          <% else %>
+              <img class="card-details-user avatar-bordered" src="<%=asset_path 'noavatar.png' %>" />
+          <% end %>
       </div>
     </div>
 
