@@ -14,6 +14,20 @@
         <% end %>
       </div>
     </div>
+    
+    <div class="col-4">
+      <h3>This week availability</h3>
+      <div>
+        <% @available_dates.each do |date| %>
+          <% if date[:available] %>
+            <span class="badge badge-pill badge-success" title='<%= "#{date[:date].day}/#{date[:date].month}" %>'><%= date[:date].day %></span>
+          <% else %>
+            <span class="badge badge-pill badge-danger" title='<%= "#{date[:date].day}/#{date[:date].month}" %>'><%= date[:date].day %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <div class="booking-form">
       <%= render "bookings/new", craft: @craft, booking: @booking %>
     </div>

@@ -1,3 +1,5 @@
+require 'date'
+
 class CraftsController < ApplicationController
   before_action :set_craft, only: %i[edit update show destroy]
   before_action :set_users, only: %i[index]
@@ -19,9 +21,16 @@ class CraftsController < ApplicationController
   end
 
   def show
-    @craftman = User.find(@craft.user_id)
-    @booking = Booking.new
     authorize @craft
+    @craftman = User.find(@craft.user_id)
+    @available_dates = set_dates
+    @booking = Booking.new
+    bookings = @craft.bookings.where("end_date >= '#{DateTime.now}' AND start_date < '#{DateTime.now.next_day(8)}'")
+    bookings.each do |booking|
+      @available_dates.each do |date|
+        date[:available] = false if (booking.start_date..booking.end_date).cover?(date[:date])
+      end
+    end
   end
 
   def new
@@ -64,6 +73,16 @@ class CraftsController < ApplicationController
 
   def set_users
     @users = User.all
+  end
+
+  def set_dates
+    date = DateTime.now
+    date_hash = []
+    7.times do
+      date_hash << { date: date, available: true }
+      date = date.next_day(1)
+    end
+    return date_hash
   end
 
   def put_markers

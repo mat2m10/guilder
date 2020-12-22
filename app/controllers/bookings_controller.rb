@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @available_dates = set_dates
     @booking = Booking.new(bookings_params)
     authorize @booking
     @booking.craft = @craft
@@ -34,4 +35,15 @@ class BookingsController < ApplicationController
   def set_craft
     @craft = Craft.find(params[:craft_id])
   end
+
+  def set_dates
+    date = DateTime.now
+    date_hash = []
+    7.times do
+      date_hash << { date: date, available: true }
+      date = date.next_day(1)
+    end
+    return date_hash
+  end
+
 end
