@@ -8,7 +8,7 @@
         <div class="card-trip-infos">
           <div>
             <h2 class="block-inline"><%= craft.name %></h2>
-            <p class="block-with-text text-left"><%= craft.description %></p>
+            <p class="block-with-text"><%= craft.description %></p>
           </div>
 
           <% if craft.user.photo.attached? %>
@@ -19,7 +19,7 @@
               <img class="card-trip-user avatar-bordered" src="<%=asset_path 'noavatar.png' %>" />
           <% end %>
 
-          <div>
+          <div class="indexbuttons">
 
             <% if policy(craft).show? %>
                 <%= link_to "More", craft_path(craft), class: 'btn btn-info my-2' %>

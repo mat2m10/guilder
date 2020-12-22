@@ -69,7 +69,6 @@
   position: relative;
   line-height: $lineHeight;
   max-height: $lineHeight * $lineCount; 
-  text-align: left;
   margin-right: -1em;
 }
 
@@ -79,6 +78,9 @@
 
 .block-inline {
   @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1);
+}
+
+.indexbuttons {
 }
 
 .all-the-cards {
