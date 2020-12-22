@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :craft_bookings, through: :crafts, source: :bookings
   has_many :clients, through: :craft_bookings, source: :user
   has_one_attached :photo
-  # Hello
+  # Hello Raph
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
