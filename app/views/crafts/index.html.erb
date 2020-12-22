@@ -2,7 +2,9 @@
   <div class = "all-the-cards">
     <% @crafts.each do |craft| %>
       <div class="card-trip">
-        <%= cl_image_tag craft.photo.key%>
+        <%= link_to craft_path(craft) do %>
+          <%= cl_image_tag craft.photo.key %>
+        <% end %>
         <div class="card-trip-infos">
           <div>
             <h2 class="block-inline"><%= craft.name %></h2>
