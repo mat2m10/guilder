@@ -98,4 +98,3 @@ class CraftsController < ApplicationController
     end
   end
 end
-
